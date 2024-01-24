@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Raleway", sans-serif;
+  local: "Raleway";
+  src: url("~@/assets/fonts/raleway/raleway-semibold.woff") format("woff"), 
+  url("~@/assets/fonts/raleway/raleway-semibold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rubik";
+  local: "Rubik";
+  src: url("~@/assets/fonts/rubik/rubik-regular.woff") format("woff"), 
+  url("~@/assets/fonts/rubik/rubik-regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
