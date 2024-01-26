@@ -3,3 +3,14 @@
   margin: 0 auto;
   max-width: 1200px;
 }
+
+@mixin font($ff, $fz, $fw) {
+  font-family: $ff;
+  font-size: $fz;
+  font-weight: $fw;
+}
+
+@mixin font-link {
+  @include font($font-main, 16px, 400);
+  color: $color-blue;
+}

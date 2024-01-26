@@ -1,5 +1,9 @@
 <template>
-  <div>companies</div>
+  <div class="companies">
+    <div class="companies__container">
+      companies
+    </div>
+  </div>
 </template>
 
 <script>
@@ -8,4 +12,12 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.companies {
+  padding-top: 75px;
+
+  &__container {
+    @include container;
+  }
+}
+</style>
