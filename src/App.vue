@@ -18,14 +18,6 @@ export default {
   components: {
     Header,
   },
-  mounted() {
-    this.fetchCompanies();
-  },
-  methods: {
-    fetchCompanies() {
-      this.$store.dispatch("fetchCompanies");
-    },
-  },
 };
 </script>
 

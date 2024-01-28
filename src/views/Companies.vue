@@ -11,6 +11,9 @@
           </router-link>
         </div>
       </div>
+      <div class="overflow-auto" v-if="getCompanies">
+        <b-pagination-nav :link-gen="linkGen" v-model="pagination.currentPage" :number-of-pages="getPaginationLength" use-router></b-pagination-nav>
+      </div>
     </div>
   </div>
 </template>
@@ -25,9 +28,41 @@ export default {
     Title,
     CompanyLink,
   },
+  mounted() {
+    this.checkQuery();
+    this.fetchCompanies();
+  },
+  watch: {
+    "$route"(to) {
+      this.pagination.currentPage = to.query.page;
+      this.fetchCompanies();
+    },
+  },
+  data() {
+    return {
+      pagination: {
+        perPage: 5,
+        currentPage: 1,
+      },
+    };
+  },
   computed: {
     getCompanies() {
       return this.$store.getters.GET_COMPANIES;
+    },
+    getPaginationLength() {
+      return Math.ceil(Number(this.$store.getters.GET_COMPANIES_TOTAL_PAGES) / this.pagination.perPage);
+    },
+  },
+  methods: {
+    fetchCompanies() {
+      this.$store.dispatch("fetchCompanies", [this.pagination.currentPage, this.pagination.perPage]);
+    },
+    linkGen(pageNum) {
+      return pageNum === 1 ? "?" : `?page=${pageNum}`;
+    },
+    checkQuery() {
+      this.pagination.currentPage = this.$route.query.page ? this.$route.query.page : 1;
     },
   },
 };

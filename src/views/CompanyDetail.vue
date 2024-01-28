@@ -113,7 +113,6 @@ export default {
   },
   mounted() {
     this.fetchCompanyInfo();
-    console.log("mounted");
   },
   filters: {
     getWordForm(args) {
@@ -146,7 +145,6 @@ export default {
   },
   methods: {
     fetchCompanyInfo() {
-      console.log("fetch");
       this.$store.dispatch("fetchCompanyInfo", this.$route.params.id);
     },
     goBack() {
