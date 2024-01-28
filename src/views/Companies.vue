@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="overflow-auto" v-if="getCompanies">
-        <b-pagination-nav :link-gen="linkGen" v-model="pagination.currentPage" :number-of-pages="getPaginationLength" use-router></b-pagination-nav>
+        <b-pagination-nav :link-gen="linkGen" v-model="pagination.currentPage" :number-of-pages="getPaginationLength" align="center" use-router></b-pagination-nav>
       </div>
     </div>
   </div>
