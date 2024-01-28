@@ -14,3 +14,9 @@
   @include font($font-main, 16px, 400);
   color: $color-blue;
 }
+
+@mixin pseudo {
+  content: '';
+  display: block;
+  position: absolute;
+}

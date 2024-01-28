@@ -11,16 +11,22 @@
 </template>
 
 <script>
-import Header from './components/Header.vue';
+import Header from "./components/Header.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Header,
-  }
-}
+  },
+  mounted() {
+    this.fetchCompanies();
+  },
+  methods: {
+    fetchCompanies() {
+      this.$store.dispatch("fetchCompanies");
+    },
+  },
+};
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

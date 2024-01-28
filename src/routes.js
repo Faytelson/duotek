@@ -1,5 +1,7 @@
 import Home from "@/views/Home";
 import Companies from "@/views/Companies";
+import CompanyDetail from "@/views/CompanyDetail";
+
 export const routes = [
   {
     path: "/",
@@ -8,5 +10,10 @@ export const routes = [
   {
     path: "/companies",
     component: Companies,
+  },
+  {
+    path: "/companies/info?:id",
+    component: CompanyDetail,
+    name: 'companyDetail'
   },
 ];
