@@ -12,7 +12,7 @@ export const routes = [
     component: Companies,
   },
   {
-    path: "/companies/info?:id",
+    path: "/companies/:id",
     component: CompanyDetail,
     name: 'companyDetail'
   },
