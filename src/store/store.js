@@ -55,7 +55,7 @@ export const store = new Vuex.Store({
   actions: {
     fetchCompanies(context, args) {
       const [page, per_page] = args;
-      fetch(`http://api-test.duotek.ru/companies?page=${page}&per_page=${per_page}`)
+      fetch(`https://api-test.duotek.ru/companies?page=${page}&per_page=${per_page}`)
         .then((res) => res.json())
         .then((res) => {
           context.commit("SET_COMPANIES", res.data);
@@ -66,7 +66,7 @@ export const store = new Vuex.Store({
         });
     },
     fetchCompanyInfo(context, id) {
-      fetch(`http://api-test.duotek.ru/companies/info?id=${id}`)
+      fetch(`https://api-test.duotek.ru/companies/info?id=${id}`)
         .then((res) => res.json())
         .then((res) => {
           context.commit("SET_COMPANY_INFO", res.data);
@@ -77,7 +77,7 @@ export const store = new Vuex.Store({
     },
     fetchCompaniesSearch(context, args) {
       const [per_page, searchQuery] = args;
-      fetch(`http://api-test.duotek.ru/companies?per_page=${per_page}&search=${searchQuery}`)
+      fetch(`https://api-test.duotek.ru/companies?per_page=${per_page}&search=${searchQuery}`)
         .then((res) => res.json())
         .then((res) => {
           context.commit("SET_COMPANIES", res.data);
@@ -88,7 +88,7 @@ export const store = new Vuex.Store({
         });
     },
     fetchDefinitions(context) {
-      fetch(`http://api-test.duotek.ru/definitions`)
+      fetch(`https://api-test.duotek.ru/definitions`)
         .then((res) => res.json())
         .then((res) => {
           console.log(res);
@@ -101,7 +101,7 @@ export const store = new Vuex.Store({
     },
     fetchCompaniesFilter(context, args) {
       const [specializations, industries] = args;
-      fetch(`http://api-test.duotek.ru/companies?specializations=${specializations}&industries=${industries}`)
+      fetch(`https://api-test.duotek.ru/companies?specializations=${specializations}&industries=${industries}`)
         .then((res) => res.json())
         .then((res) => {
           console.log(res)
