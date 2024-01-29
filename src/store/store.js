@@ -54,5 +54,17 @@ export const store = new Vuex.Store({
           console.log(err);
         });
     },
+    fetchCompaniesSearch(context, args) {
+      const [per_page, searchQuery] = args;
+      fetch(`http://api-test.duotek.ru/companies?per_page=${per_page}&search=${searchQuery}`)
+        .then((res) => res.json())
+        .then((res) => {
+          context.commit("SET_COMPANIES", res.data);
+          context.commit("SET_COMPANIES_TOTAL_PAGES", res.meta.total);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 });

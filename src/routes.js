@@ -12,6 +12,7 @@ export const routes = [
     path: "/companies/",
     component: Companies,
     name: "companies",
+    props: (route) => ({ query: route.query.search }),
   },
   {
     path: "/companies/:id",
