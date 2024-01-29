@@ -28,6 +28,9 @@ export default {};
 
 <style lang="scss" scoped>
 .header {
+  padding: 22px 0;
+  border-bottom: 1px solid $color-ultra-light-grey;
+
   &__container {
     @include container;
   }

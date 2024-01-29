@@ -8,6 +8,9 @@ export const store = new Vuex.Store({
     companies: null,
     companyInfo: null,
     companiesTotalPages: null,
+    industries: null,
+    specializations: null,
+    filteredItems: null,
   },
   getters: {
     GET_COMPANIES(state) {
@@ -19,6 +22,15 @@ export const store = new Vuex.Store({
     GET_COMPANIES_TOTAL_PAGES(state) {
       return state.companiesTotalPages;
     },
+    GET_INDUSTRIES(state) {
+      return state.industries;
+    },
+    GET_SPECS(state) {
+      return state.specializations;
+    },
+    GET_FILTERED_ITEMS(state) {
+      return state.filteredItems;
+    },
   },
   mutations: {
     SET_COMPANIES(state, payload) {
@@ -29,6 +41,15 @@ export const store = new Vuex.Store({
     },
     SET_COMPANIES_TOTAL_PAGES(state, payload) {
       state.companiesTotalPages = payload;
+    },
+    SET_INDUSTRIES(state, payload) {
+      state.industries = payload;
+    },
+    SET_SPECS(state, payload) {
+      state.specializations = payload;
+    },
+    SET_FILTERED_ITEMS(state, payload) {
+      state.filteredItems = payload;
     },
   },
   actions: {
@@ -61,6 +82,30 @@ export const store = new Vuex.Store({
         .then((res) => {
           context.commit("SET_COMPANIES", res.data);
           context.commit("SET_COMPANIES_TOTAL_PAGES", res.meta.total);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    fetchDefinitions(context) {
+      fetch(`http://api-test.duotek.ru/definitions`)
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          context.commit("SET_INDUSTRIES", res.Industry);
+          context.commit("SET_SPECS", res.CompanySpecialization);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    fetchCompaniesFilter(context, args) {
+      const [specializations, industries] = args;
+      fetch(`http://api-test.duotek.ru/companies?specializations=${specializations}&industries=${industries}`)
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res)
+          context.commit("SET_COMPANY_INFO", res.data);
         })
         .catch((err) => {
           console.log(err);
